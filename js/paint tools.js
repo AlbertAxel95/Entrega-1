@@ -1,15 +1,47 @@
 
 class Paint_Tools{
 
-    constructor(){
+    constructor(tools, colors){
+        this.set_tools(tools);
+        this.set_colors(colors);
         this.brushColor = "#000000";
         this.eraserColor = "rgb(255, 255, 255)"
         this.brushSize = 1;
         this.eraserSize = 1;
         // Tool que estará activa desde el Comienzo.
         this.activeTool = "brush";
-        // Nada más construirse, actualiza el Cursor del Mouse con el Ícono de la Tool activa.
-        this.set_mouseCursor();
+        // Nada más construirse, actualiza el Cursor del Mouse con el Ícono de la Tool activa. (Entre otros ajustes iniciales).
+        this.set_initialMouseCursor();
+        this.set_initialSelectedTool();
+        this.set_initialSelectedColor();
+    }
+
+
+    set_initialMouseCursor(){
+        switch(this.activeTool){
+            case "brush": canvas.style.cursor = 'url("images/cursor.png") 0 30,default'; break;
+            case "eraser": canvas.style.cursor = 'url("images/cursor.png") 0 30,default'; break;
+        }
+    }
+
+    set_initialSelectedTool(){
+        for(let i = 0; i < this.tools.length; i++){
+            // Si esta es la Herramienta activa, le dibujo un recuadro.
+            if (this.activeTool == this.tools[i].id){
+                this.tools[i].style = "outline-style: solid;  outline-color: rgba(66, 104, 110, 0.63); background-color: rgba(95, 150, 160, 0.63);";
+                break;
+            }
+        }
+    }
+
+    set_initialSelectedColor(){
+        for(let i = 0; i < this.colors.length; i++){
+            // Si este es el Color activo, le hago un Highlight.
+            if (this.brushColor == this.colors[i].id){
+                this.colors[i].style = "outline-style: solid;  outline-color: rgb(255, 255, 255)";
+                break;
+            }
+        }
     }
 
     get_brushColor(){
@@ -34,13 +66,6 @@ class Paint_Tools{
 
     get_activeTool(){
         return this.activeTool;
-    }
-
-    set_mouseCursor(){
-        switch(this.activeTool){
-            case "brush": canvas.style.cursor = 'url("images/cursor.png") 0 30,default'; break;
-            case "eraser": canvas.style.cursor = 'url("images/cursor.png") 0 30,default'; break;
-        }
     }
 
     set_brushSize(value){
@@ -68,7 +93,7 @@ class Paint_Tools{
     }
 
 
-    showCursor_activeTool(){
+    link_Tools(){
         // Esta función NO solo muestra el Cursor para el Mouse, correspondiente a la Tool activa... Sino que también le otorga un "Highlight" al Ícono del a herramienta
         // en la Tool Box, para que visualmente sea sencillo notar cual está activa.
         //------------------------------------------------------------------
@@ -104,7 +129,7 @@ class Paint_Tools{
 
 
 
-    showCursor_activeColor(){
+    link_colorPalette(){
         // Permite que al clickear un Ícono de la Paleta de Colores, su Color se aplique al Brush para que puedas pintar con él.
         //------------------------------------------------------------------
         // Añade "Event Listeners" a los Buttons de los Colores.

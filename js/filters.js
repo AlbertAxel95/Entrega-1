@@ -42,4 +42,17 @@ class Filters{
         }
         return [r, g, b];
     }
+
+
+    threshold(r, g, b){
+        // 'Treshold', 'Binarization', etc.
+        //-------------------------------------
+        // Transformo de RGB a escala de Grises.
+		let gray =  (0.299 * r + 0.587 * g + 0.114 * b)
+        // Si es mayor a 127, considero que el Pixel es BLANCO. (Si no, considero que es NEGRO).
+        if (gray > 127){
+            return [255, 255, 255]
+		}
+        return[0, 0, 0]
+    }
 }

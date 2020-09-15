@@ -6,6 +6,22 @@
 // - 1h27m19s
 
 
+// |INFO|
+// - Si se preoguntan como está implementada la parte de los filtros y cambios en la Imagen, explico mi decisión de implementación.
+//      * Hago un Back-up de la Imagen cuando se carga, y también cada vez que le haces una modificación.
+//      * Dicho Back-up es para que cuando cambies el filtro, puedas cambiar de uno al otro todas las veces que quieras, y estos NO se stackeen
+//        uno encima del otro.
+//      * Esta es la razón por la cual si subes una imagen, le cambias el filtro, y luego pintas sobre ella, lo nuevo que pintes no no aplique el filtro automáticamente
+//        luego de terminar de pintarlo (que fue una de mis ideas de implementación). Para que puedas aplicarle un filtro a la imagen, luego pintar sobre ella, y luego
+//        aplicar otro filtro pero que esta vez afecte a ambos. (Y así y así, stackeando capas de filtros y ediciones).
+//
+// - El Canvas tiene definido un Max y Min de tamaño, y por más que la Imagen sea más grande/chica quee este tamaño, se achicará/agrandará para aprovecha todo el espacio
+//   posible, pero sin perder su relación de aspecto. (A su vez, el Canvas se ajustará a lo que ocupe la Imagen una vez redimencionada, evitando así espacios en blanco).
+//
+// - Class "Filters": Maneja los Filtros.
+// - Class "ImageSelected_Data": Maneja la información (data) del lienzo, (EJ: Imagen que subió el jugador, ediciones, etc).
+// - Class "Paint_Tools": Maneja las herramientas del Lienzo, como el Brush, Eraser, Colors, Sizes, etc.
+
 // |BUGS|
 // - La Paleta de Colores NO Inicia con el Color Negro seleccionado. (No lo marca como seleccionado, pero si pintás, pinta).
 
@@ -30,18 +46,16 @@ let input_selectFile = document.querySelector('.selectFile');
 // Mis Objetos.
 let filters = new Filters;
 let imageSelected_Data = new ImageSelected_Data;
-let PaintTools = new Paint_Tools;
+// Leo las Herramientas y Colores definidos en el HTML, y los guardo.
+let PaintTools = new Paint_Tools(document.getElementsByClassName("Tools"), document.getElementsByClassName("Color"));
 
 // Por defecto inicias sin estar presionando el Mouse.
 let click_down = false;
 let lastX = -1;
 let lastY = -1;
-// Leo las herramientas definidas en el HTML y las guardo.
-PaintTools.set_tools(document.getElementsByClassName("Tools"));
-// Actualiza
-PaintTools.showCursor_activeTool();
-PaintTools.set_colors(document.getElementsByClassName("Color"));
-PaintTools.showCursor_activeColor();
+// Linkea la funcionalidad a las Tools y los Colores de la Paleta de Colores.
+PaintTools.link_Tools();
+PaintTools.link_colorPalette();
 
 
 
@@ -121,6 +135,7 @@ function draw_filtered_image(imageData, filter){
                     case 2: rgba = filters.sepia(r, g, b); break;
                     case 3: rgba = filters.brighten(r, g, b); break;
                     case 4: rgba = filters.negative(r, g, b); break;
+                    case 5: rgba = filters.threshold(r, g, b); break;
                     //rgba = filters.blackPairColumns(x, r, g, b);
                 }
                 imageData.data[index + 0] = rgba[0];

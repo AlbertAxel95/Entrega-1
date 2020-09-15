@@ -1,3 +1,15 @@
+
+body, html {
+  height: 100%;
+}
+
+.bg {
+  background-image: url("https://i.ytimg.com/vi/98h3I58amR8/maxresdefault.jpg"); /* url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).jpg"); */
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
   
   #toolBox {
     outline-style: solid;
@@ -7,9 +19,17 @@
     padding-bottom: 6px;
   }
 
+  .browser-default, .custom-select{
+    /* Para que los Dropdowns sean tan Anchos como lo sea su opción más Ancha */
+    width: auto;
+  }
+
   #canvas{
     padding-top: 4px;
-    width: 100%;
+  }
+
+  .canvas1{
+    
   }
 
   #paintFullBox{
