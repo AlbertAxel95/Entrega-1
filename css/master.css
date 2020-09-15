@@ -1,0 +1,155 @@
+  
+  #toolBox {
+    outline-style: solid;
+    outline-color: rgba(66, 104, 110, 0.63);
+    background-color: rgba(57, 134, 185, 0.451);
+    padding-top: 12px;
+    padding-bottom: 6px;
+  }
+
+  #canvas{
+    padding-top: 4px;
+    width: 100%;
+  }
+
+  #paintFullBox{
+    outline-style: solid;
+    outline-color: rgba(66, 104, 110, 0.63);
+    background-color: rgba(57, 134, 185, 0.451);
+    padding-top: 3px;
+  }
+
+  #upload-button{
+    padding-top: 4px;
+    margin-right: 24px;
+  }
+
+  #filters{
+    /* Aumentar para correr Dropdown hacia abajo */
+    padding-top: 4px;
+    /* Aumentar para dejar más espacio entre el Dropdown y la imagen del Brush */
+    margin-right: 40px;
+  }
+
+  #brush-image{
+    /* Aumentar para correr imagen a la derecha */
+    padding-left: 45px;
+  }
+
+  #brushSize-Dropdown{
+    margin-left: 6px;
+  }
+
+  #eraser-image{
+    margin-left: -17px;
+    margin-right: -17px;
+  }
+
+  #eraserSize-Dropdown{
+    padding-left: 0px;
+  }
+
+  #download-image{
+    padding-left: 50px;
+  }
+
+  #clearImage-button{
+    padding-left: 28px;
+  }
+
+
+
+
+/* ====================================================== PALETA DE COLORES ====================================================== */
+.paleta{
+    /* Aumentar valor negativo para subir más la Paleta de Colores */
+    margin-top: -4px;
+    margin-bottom: 4px;
+    padding-left: 2px;
+}
+
+.paleta button{
+  height: 16px;
+  width: 16px;
+  box-shadow: 1px 1px 3px 1px #000;
+}
+
+.black{
+    background-color: rgb(0, 0, 0);
+}
+
+.gray{
+  background-color: rgb(127, 127, 127);
+}
+
+.darkBrown{
+  background-color: rgb(136, 0, 21);
+}
+
+.red{
+  background-color: rgb(237, 28, 36);
+}
+
+.orange{
+  background-color: rgb(255, 127, 39);
+}
+
+.yellow{
+  background-color: rgb(255, 242, 0);
+}
+
+.green{
+  background-color: rgb(34, 177, 76);
+}
+
+.lightBlue{
+  background-color: rgb(139, 219, 253);
+}
+
+.blue{
+  background-color: rgb(63, 72, 204);
+}
+
+.purple{
+  background-color: rgb(163, 73, 164);
+}
+
+.white{
+    background-color: rgb(255, 255, 255);
+}
+
+.lightGray{
+  background-color: rgb(195, 195, 195);
+}
+
+.lightBrown{
+  background-color: rgb(185, 122, 87);
+}
+
+.pink{
+  background-color: rgb(255, 174, 201);
+}
+
+.lightOrange{
+  background-color: rgb(255, 201, 14);
+}
+
+.lightYellow{
+  background-color: rgb(239, 228, 176);
+}
+
+.lightGreen{
+  background-color: rgb(181, 230, 29);
+}
+
+.lightestBlue{
+  background-color: rgb(153, 217, 234);
+}
+
+.greyedBlue{
+  background-color: rgb(112, 146, 190);
+}
+
+.strongPink{
+  background-color: rgb(243, 101, 222);
+}

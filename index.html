@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/master.css">
+		<meta charset="UTF-8">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+		<title>Get image Data using file Dialog - Example</title>
+	</head>
+
+	<body>
+		<div id="paintFullBox"class="container">
+			<div id="toolBox" class="row">
+				<div id="upload-button" class="col col-1">
+					<!-- Este 'onclick' selecciona el "objeto" que tenga la Class 'input1' atachada, osea la de abajo de él -->
+					<button class="btn btn-primary" onclick="document.querySelector('.selectFile').click();">Upload File</button>
+					<input class="selectFile" type="file" style="display: none">
+				</div>
+
+				<div id="filters" class="col col-1">
+					<select class="browser-default custom-select" style="width:auto" id="filterSelected" onchange="applyFilter()">
+						<option value="0">No Filter</option>
+						<option value="1">Gray</option>
+						<option value="2">Sepia</option>
+						<option value="3">Brighten</option>
+						<option value="4">Negative</option>
+					</select>
+				</div>
+
+				<div id="brush-image" class="col col-1">
+					<img id="brush" class="Tools" src="images/Brush.png" alt="brush" style="outline-style: solid;  outline-Color: rgba(66, 104, 110, 0.63); background-Color: rgba(95, 150, 160, 0.63);">
+				</div>
+
+					<div id="brushSize-Dropdown" class="col col-1">
+					<select class="browser-default custom-select" style="width:auto" id="brushSizeSelected" onchange="set_brushSize()">
+						<option value="1">1</option>
+						<option value="3">3</option>
+						<option value="6">6</option>
+						<option value="9">9</option>
+						<option value="12">12</option>
+						<option value="16">16</option>
+						<option value="20">20</option>
+					</select>
+				</div>
+
+				<div class="col col-3 paleta">
+					<div class="row">
+						<div class="col">
+							<button id="#000000" class="Color black active" type="button" name="button"></button>
+							<button id="#7f7f7f" class="Color gray" type="button" name="button"></button>
+							<button id="#880015" class="Color darkBrown" type="button" name="button"></button>
+							<button id="#ed1c24" class="Color red" type="button" name="button"></button>
+							<button id="#ff7f27" class="Color orange" type="button" name="button"></button>
+							<button id="#fff200" class="Color yellow" type="button" name="button"></button>
+							<button id="#22b14c" class="Color green" type="button" name="button"></button>
+							<button id="#00a2e8" class="Color lightBlue" type="button" name="button"></button>
+							<button id="#3f48cc" class="Color blue" type="button" name="button"></button>
+							<button id="#a349a4" class="Color purple" type="button" name="button"></button>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col">
+							<button id="#ffffff" class="Color white" type="button" name="button"></button>
+							<button id="#c3c3c3" class="Color lightGray" type="button" name="button"></button>
+							<button id="#b97a57" class="Color lightBrown" type="button" name="button"></button>
+							<button id="#ffaec9" class="Color pink" type="button" name="button"></button>
+							<button id="#ffc90e" class="Color lightOrange" type="button" name="button"></button>
+							<button id="#efe4b0" class="Color lightYellow" type="button" name="button"></button>
+							<button id="#b5e61d" class="Color lightGreen" type="button" name="button"></button>
+							<button id="#99d9ea" class="Color lightestBlue" type="button" name="button"></button>
+							<button id="#7092be" class="Color greyedBlue" type="button" name="button"></button>
+							<button id="#f365de" class="Color strongPink" type="button" name="button"></button>
+						</div>
+					</div>
+				</div>
+						
+				<div id="eraser-image" class="col col-1">
+					<img id="eraser" class="Tools" src="images/Eraser.png" alt="eraser">
+				</div>
+
+				<div id="eraserSize-Dropdown" class="col col-1">
+					<select class="browser-default custom-select" style="width:auto" id="eraserSizeSelected" onchange="set_eraserSize()">
+						<option value="1">1</option>
+						<option value="3">3</option>
+						<option value="6">6</option>
+						<option value="9">9</option>
+						<option value="12">12</option>
+						<option value="16">16</option>
+						<option value="20">20</option>
+						<option value="50">50</option>
+						<option value="99">99</option>
+					</select>
+				</div>
+
+				<div id="download-image" class="col col-1">
+					<a href="#" id="saveImage" download="imagen.png">
+					<img class="utility" src="images/Download.png" alt="guardar"></a>
+				</div>
+
+				<div id="clearImage-button" class="col col-1">
+					<input id="clearImage" class="btn btn-danger" type="button" value="Clear Image" onclikc="clearImage()">
+				</div>
+			</div>
+		<!-- </div> Container - id=toolBox -->
+
+		
+
+			<div id="canvas" class="row">
+				<!-- CANVAS -->
+				<div class="col-1">
+					<canvas class="canvas1"></canvas>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/javascript" src="js/filters.js"></script>
+	<script type="text/javascript" src="js/image.js"></script>
+	<script type="text/javascript" src="js/paint tools.js"></script>
+	<script type="text/javascript" src="js/myJS.js"></script>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+</html>
