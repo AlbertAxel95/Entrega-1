@@ -25,11 +25,13 @@ body, html {
   }
 
   #canvas{
-    padding-top: 4px;
+    padding-top: 3px;
+    padding-left: 155px;
   }
 
   .canvas1{
-    
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   #paintFullBox{

@@ -1,11 +1,3 @@
-//alert("Your screen resolution is: " + window.screen.width * window.devicePixelRatio + "x" + window.screen.height * window.devicePixelRatio);
-
-
-// |LINK|
-// - https://drive.google.com/file/d/1FNikDOprATlvLC5JhVyCGB3h-yMWV4su/view
-// - 1h27m19s
-
-
 // |INFO|
 // - Si se preoguntan como está implementada la parte de los filtros y cambios en la Imagen, explico mi decisión de implementación.
 //      * Hago un Back-up de la Imagen cuando se carga, y también cada vez que le haces una modificación.
@@ -21,9 +13,6 @@
 // - Class "Filters": Maneja los Filtros.
 // - Class "ImageSelected_Data": Maneja la información (data) del lienzo, (EJ: Imagen que subió el jugador, ediciones, etc).
 // - Class "Paint_Tools": Maneja las herramientas del Lienzo, como el Brush, Eraser, Colors, Sizes, etc.
-
-// |BUGS|
-// - La Paleta de Colores NO Inicia con el Color Negro seleccionado. (No lo marca como seleccionado, pero si pintás, pinta).
 
 
 // Tamaño máximo permitido para el Canvas y las Imágenes.
@@ -172,6 +161,8 @@ document.getElementById("saveImage").onclick = function saveImage(){
 
 
 document.getElementById("clearImage").onclick = function clearImage(){
+    // Devuelvo el Canvas a sus medidas originales cuando lo "Reseteas".
+    canvas.width = MAX_CANVAS_WIDTH;  canvas.height = MAX_CANVAS_HEIGHT;
     context.fillStyle = "rgb(255, 255, 255)";
     clean_canvas();
 }
